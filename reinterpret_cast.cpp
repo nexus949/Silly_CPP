@@ -59,7 +59,7 @@ int main(){
 
     // float* f_ptr = reinterpret_cast<int*>(&ch); //compilation error, Template arg type must be same as lvalue type !
 
-    // char c = 300;  //will cause overflow as 300 is bigger than a byte
+    // char c = 300;  //will cause overflow as 300 is bigger than a byte (compile error)
     // std::cout << c << std::endl;
 
     _1Byte b;
@@ -71,7 +71,28 @@ int main(){
     std::cout << ch_2 << std::endl; //That is printed !
 
     //storing a object in a char is not trivial ! Need to overload the () operator and define everything manually what to store and what not to store.
-    //If it can be store it will be else will casue an overflow or some other issue!
+    //If it can be stored it will be else will cause an overflow or some other issue!
     //Every class and object is just collection of primitive data types so more or less we need to return or manipulate primitives in the overload !
+
+    /*
+    But why does this works :
+    object o;
+    char ch = o; //no overflow (C++ trucates bits and keep the 8 least bits)
+    OR
+    int x = 300;
+    char ch = x; //no overflow (C++ trucates bits and keep the 8 least bits)
+
+    and this doesn't ?:
+    char ch = 300; //overflow
+
+    Because char ch = 300; Here 300 is a rvalue and C++ knows this at compile time and thus throws an overflow error !
+    BUT
+    object o;
+    char ch = o; Here o is a lvalue and C++ does not its content at compile time therefore at runtime, it truncates the bits and keeps the 8 least bits
+    and no overflow !
+
+    C++ is strict with literals (rvalues), but lenient with lvalues. This is part of C++'s design — it favors flexibility at runtime,
+    while enforcing safety where it can at compile time.
+    */
     return 0;
 }
