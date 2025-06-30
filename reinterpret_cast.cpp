@@ -20,7 +20,7 @@ class _MoreThan1Byte{
 
     _MoreThan1Byte(){}
     operator int() const {
-        return x; //Will cause overflow if tried to store in just a byte(char)
+        return x; //gets truncated and only the least 8 bits are stored in a byte(char)
     }
 
     void print_x(){
