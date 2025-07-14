@@ -1,3 +1,10 @@
+/*
+
+   THIS IS STILL INCOMPLETE ! WILL VISIT THIS LATER !
+
+*/
+
+
 #include<iostream>
 
 int main(){
@@ -16,5 +23,27 @@ int main(){
     std::cout << static_cast<int>(buffer[1]) << std::endl;
     std::cout << static_cast<int>(buffer[2]) << std::endl;
     std::cout << static_cast<int>(buffer[3]) << std::endl;
+
+    *reinterpret_cast<float*>(buffer + 4) = 32.36f;
+
+    std::cout << static_cast<float>(buffer[4]) << std::endl;
+    std::cout << static_cast<float>(buffer[5]) << std::endl;
+    std::cout << static_cast<float>(buffer[6]) << std::endl;
+    std::cout << static_cast<float>(buffer[7]) << std::endl;
+    // std::cout << static_cast<float>(buffer[8]) << std::endl;
+    // std::cout << static_cast<float>(buffer[9]) << std::endl;
+    // std::cout << static_cast<float>(buffer[10]) << std::endl;
+    // std::cout << static_cast<float>(buffer[12]) << std::endl;
+    // std::cout << static_cast<float>(buffer[13]) << std::endl;
+    // std::cout << static_cast<float>(buffer[14]) << std::endl;
+    // std::cout << static_cast<float>(buffer[15]) << std::endl;
+
+    // // *reinterpret_cast<char*>(buffer + 2) = 'A';
+    // *reinterpret_cast<int*>(buffer + 2) = 999; //overlap the byte starting from index 2 !
+    // std::cout << static_cast<int>(buffer[2]) << std::endl;
+    // std::cout << static_cast<int>(buffer[3]) << std::endl;
+    // std::cout << static_cast<int>(buffer[4]) << std::endl;
+    // std::cout << static_cast<int>(buffer[5]) << std::endl;
+    // std::cout << static_cast<int>(buffer[6]) << std::endl;
     return 0;
 }
